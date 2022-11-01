@@ -127,7 +127,7 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches.
 -- Add your language server below:
-local servers = { 'bashls', 'cmake', 'pyright', 'gopls', 'html', 'cssls', 'tsserver', 'tailwindcss' }
+local servers = { 'bashls', 'cmake', 'pyright', 'gopls', 'html', 'cssls', 'tsserver', 'texlab', 'tailwindcss' }
 
 -- Call setup
 for _, lsp in ipairs(servers) do
@@ -142,6 +142,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+--[[
 lspconfig['ccls'].setup {
   on_attach = on_attach,
   root_dir = root_dir,
@@ -151,6 +152,7 @@ lspconfig['ccls'].setup {
     debounce_text_changes = 150,
   },
 }
+--]]
 
 lspconfig['volar'].setup {
   cmd = { 'volar-server', '--stdio' },
@@ -190,7 +192,7 @@ lspconfig['volar'].setup {
       },
   },
 }
---[[
+---[[
 lspconfig['clangd'].setup {
   on_attach = on_attach,
   root_dir = root_dir,
@@ -199,7 +201,7 @@ lspconfig['clangd'].setup {
     -- default in neovim 0.7+
     debounce_text_changes = 150,
   },
-  cmd = {'clangd', '--query-driver=/Users/gabrielestulzer/.espressif/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-gcc'}
+  cmd = {'clangd'}
 }
 --]]
 
