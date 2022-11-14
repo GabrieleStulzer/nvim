@@ -112,8 +112,17 @@ return packer.startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons' },
   }
 
-  -- LaTEX Plugin
+  -- LaTeX Plugin
   use 'lervag/vimtex'
+
+  -- Telescope Plugin
+  use {
+  'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  use 'BurntSushi/ripgrep'
+  use 'sharkdp/fd'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

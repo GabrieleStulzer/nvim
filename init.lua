@@ -20,4 +20,5 @@ require('plugins/nvim-cmp')
 require('plugins/nvim-treesitter')
 require('plugins/alpha-nvim')
 require('plugins/vim-tex')
+require('plugins/nvim-telescope')
 
