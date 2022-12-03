@@ -91,6 +91,9 @@ return packer.startup(function(use)
     },
   }
 
+  --- Rust Specific
+  use 'simrat39/rust-tools.nvim'
+
   -- Statusline
   use {
     'feline-nvim/feline.nvim',
