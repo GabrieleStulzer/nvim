@@ -85,11 +85,15 @@ return packer.startup(function(use)
     requires = {
       'L3MON4D3/LuaSnip',
       'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lua',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-buffer',
       'saadparwaiz1/cmp_luasnip',
     },
   }
+
+  -- LSP Server manager
+  use { "williamboman/mason.nvim" }
 
   --- Rust Specific
   use 'simrat39/rust-tools.nvim'
@@ -108,6 +112,9 @@ return packer.startup(function(use)
       require('gitsigns').setup{}
     end
   }
+
+  -- Vim Fugitive
+  use 'tpope/vim-fugitive'
 
   -- Dashboard (start screen)
   use {
