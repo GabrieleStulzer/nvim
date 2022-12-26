@@ -16,9 +16,14 @@ require('core/statusline')
 require('plugins/nvim-tree')
 require('plugins/indent-blankline')
 require('plugins/nvim-cmp')
+require('plugins/luasnip')
 require('plugins/nvim-treesitter')
 --require('plugins/alpha-nvim')
 require('plugins/vim-tex')
 require('plugins/nvim-telescope')
 require('plugins/mason')
+
 require('lsp/lspconfig')
+
+
+print('Hello')
