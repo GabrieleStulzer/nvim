@@ -94,6 +94,7 @@ return packer.startup(function(use)
 
   -- LSP Server manager
   use { "williamboman/mason.nvim" }
+  use { "williamboman/mason-lspconfig.nvim" }
 
   --- Rust Specific
   use 'simrat39/rust-tools.nvim'
