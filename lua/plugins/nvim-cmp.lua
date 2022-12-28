@@ -16,6 +16,35 @@ if not luasnip_status_ok then
   return
 end
 
+local cmp_kinds = {
+    Text = "",
+  Method = "",
+  Function = "",
+  Constructor = "",
+  Field = "",
+  Variable = "",
+  Class = "ﴯ",
+  Interface = "",
+  Module = "",
+  Property = "ﰠ",
+  Unit = "",
+  Value = "",
+  Enum = "",
+  Keyword = "",
+  Snippet = "",
+  Color = "",
+  File = "",
+  Reference = "",
+  Folder = "",
+  EnumMember = "",
+  Constant = "",
+  Struct = "",
+  Event = "",
+  Operator = "",
+  TypeParameter = ""
+}
+
+
 cmp.setup {
   -- Load snippet support
   snippet = {
@@ -24,7 +53,15 @@ cmp.setup {
     end,
   },
 
--- Completion settings
+  formatting = {
+    fields = { "kind", "abbr" },
+    format = function(_, vim_item)
+      vim_item.kind = cmp_kinds[vim_item.kind] or ""
+      return vim_item
+    end,
+  },
+
+  -- Completion settings
   completion = {
     --completeopt = 'menu,menuone,noselect'
     keyword_length = 2
@@ -40,7 +77,7 @@ cmp.setup {
     ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
+      select = false,
     },
 
     -- Tab mapping
@@ -64,6 +101,7 @@ cmp.setup {
     end
   },
 
+
   -- Load sources, see: https://github.com/topics/nvim-cmp
   sources = {
     { name = 'nvim_lsp' },
@@ -72,4 +110,22 @@ cmp.setup {
     { name = 'buffer' },
   },
 }
+
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
 
